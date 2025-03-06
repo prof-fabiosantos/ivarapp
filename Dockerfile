@@ -11,6 +11,7 @@ WORKDIR /app
 
 # Copiar arquivos
 COPY app.py app.py
+COPY frames.png frames.png
 COPY requirements.txt requirements.txt
 
 # Instalar dependências Python
