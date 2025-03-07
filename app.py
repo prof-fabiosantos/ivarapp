@@ -10,6 +10,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import requests
 
 # Configuração da API Gemini - substitua pela sua chave válida
+#os.environ["GOOGLE_API_KEY"] = ""
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 gemini_model = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
@@ -179,34 +180,21 @@ def processar_video(uploaded_file):
 
     os.remove(temp_path)
 
-st.title("🤖 iVAR ⚽")
+st.title("🤖IA Analista de Futebol ⚽🤾‍♂️")
+st.write("Inteligência Artificial que analisa vídeos de jogadas dúvidosas de futebol, visa auxiliar na verificação se a jogada foi ou não irregular.")
+st.write("Envie um vídeo curto no máximo uns 6 segundos. Vídeo deve está no formato mp4")
+st.write("Para realizar uma análise siga os passos: 1)Digite seu e-mail para gerar o link de pagamento;  2)Efetue o pagamento de R$ 10,00;  3)Envie o Vídeo; 4)Realize a análise")
+st.write("Veja na imagem abaixo como a IA realiza a análise.")
+st.image("frames.png", caption="Logo Streamlit", use_container_width=True)
 
-st.write("""
-Com o iVAR, você resolve de vez aquelas jogadas polêmicas do futebol. Envie o vídeo do lance e nossa IA analisa cada frame usando as Regras Oficiais da FIFA. Tecnologia de ponta para trazer justiça ao seu jogo!
-""")
-
-st.markdown("""
-### 📋 Como funciona
-1. Informe seu e-mail para gerar o link de pagamento;
-2. Realize o pagamento de R$ 5,00;
-3. Envie o vídeo (máximo 10 segundos, formato MP4);
-4. Aguarde enquanto a IA analisa e te envia o resultado.
-""")
-
-st.write("Veja abaixo como a IA analisa cada lance:")
-
-col1, col2, col3 = st.columns([2, 1, 1])
-with col1:
-    st.image("frames.png", caption="Exemplo da análise automática da IA", width=380)
-
-email = st.text_input("Digite seu e-mail para gerar o link de pagamento:")
+email = st.text_input("Digite seu e-mail para pagar e acessar o analisador:")
 
 if not st.session_state["link_pagamento_clcado"]:
     if st.button("Gerar link de pagamento 💳💵"):
         with st.spinner("Gerando link de pagamento, aguarde..."):
             response = requests.post(
                 "https://apistripe.onrender.com/create-checkout-session/",
-                json={"email": email, "amount": 500}
+                json={"email": email, "amount": 1000}
             )
             if response.status_code == 200:
                 checkout_url = response.json()["checkout_url"]
@@ -240,6 +228,16 @@ if not st.session_state["acesso_verificado"]:
 else:
     st.success("✅ Acesso já verificado!")
 
+
+
+#if st.session_state.get("acesso_liberado") and not st.session_state["video_processado"]:
+#    uploaded_file = st.file_uploader("Faça upload de um vídeo de futebol", type=["mp4"])
+#    if uploaded_file:
+#        processar_video(uploaded_file)    
+
+#if st.session_state.get("log_text"):
+#    st.session_state["acesso_verificado"] = True
+#    st.download_button("📥 Baixar Log de Observações", st.session_state["log_text"], "observations.txt")
 
 if st.session_state.get("acesso_liberado") and not st.session_state["video_processado"]:
     uploaded_file = st.file_uploader("Faça o envio de um vídeo mp4 do lance duvidoso", type=["mp4"])
