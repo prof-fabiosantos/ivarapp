@@ -157,8 +157,8 @@ def processar_video(uploaded_file):
     cap.release()
     st.success("Processamento concluído! ✅")
 
-    if irregular_frames:
-        st.write("### Frames com irregularidades detectadas:")
+    if irregular_frames:       
+        st.write("### 📊 Resumo das irregularidades detectadas")
         cols = st.columns(3)
 
         for idx, (frame_path, detected_irregularities) in enumerate(irregular_frames):
@@ -198,9 +198,6 @@ st.write("Veja abaixo como a IA analisa cada lance:")
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     st.image("frames.png", caption="Exemplo da análise automática da IA", width=370)
-
-st.write("### 📊 Resumo das irregularidades detectadas")
-
 
 email = st.text_input("Digite seu e-mail para pagar e acessar o analisador:")
 
