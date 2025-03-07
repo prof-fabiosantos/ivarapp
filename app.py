@@ -188,7 +188,7 @@ Com o iVAR, você resolve de vez aquelas jogadas polêmicas do futebol. Envie o 
 st.markdown("""
 ### 📋 Como funciona
 1. Informe seu e-mail para gerar o link de pagamento;
-2. Realize o pagamento de R$ 10,00;
+2. Realize o pagamento de R$ 5,00;
 3. Envie o vídeo (máximo 10 segundos, formato MP4);
 4. Aguarde enquanto a IA analisa e te envia o resultado.
 """)
@@ -197,7 +197,7 @@ st.write("Veja abaixo como a IA analisa cada lance:")
 
 col1, col2, col3 = st.columns([2, 1, 1])
 with col1:
-    st.image("frames.png", caption="Exemplo da análise automática da IA", width=400)
+    st.image("frames.png", caption="Exemplo da análise automática da IA", width=380)
 
 email = st.text_input("Digite seu e-mail para gerar o link de pagamento:")
 
@@ -206,7 +206,7 @@ if not st.session_state["link_pagamento_clcado"]:
         with st.spinner("Gerando link de pagamento, aguarde..."):
             response = requests.post(
                 "https://apistripe.onrender.com/create-checkout-session/",
-                json={"email": email, "amount": 1000}
+                json={"email": email, "amount": 500}
             )
             if response.status_code == 200:
                 checkout_url = response.json()["checkout_url"]
