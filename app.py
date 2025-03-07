@@ -198,7 +198,7 @@ st.write("Veja abaixo como a IA analisa cada lance:")
 
 col1, col2, col3 = st.columns([2, 1, 1])
 with col1:
-    st.image("frames.png", caption="Exemplo da análise automática da IA", width=400
+    st.image("frames.png", caption="Exemplo da análise automática da IA", width=370)
 
 
 
