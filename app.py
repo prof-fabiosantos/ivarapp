@@ -195,8 +195,8 @@ st.markdown("""
 
 st.write("Veja abaixo como a IA analisa cada lance:")
 
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
+col1, col2, col3 = st.columns([2, 1, 1])
+with col1:
     st.image("frames.png", caption="Exemplo da análise automática da IA", width=370)
 
 email = st.text_input("Digite seu e-mail para pagar e acessar o analisador:")
