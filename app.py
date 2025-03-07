@@ -159,7 +159,7 @@ def processar_video(uploaded_file):
     st.success("Processamento concluído! ✅")
 
     if irregular_frames:
-        st.write("### Frames com irregularidades detectadas:")
+        st.write("### 📊 Frames com irregularidades detectadas:")
         cols = st.columns(3)
 
         for idx, (frame_path, detected_irregularities) in enumerate(irregular_frames):
@@ -180,7 +180,7 @@ def processar_video(uploaded_file):
 
     os.remove(temp_path)
 
-st.title("🤖 iVAR ⚽🤾‍♂️")
+st.title("🤖 iVAR ⚽")
 
 st.write("""
 Com o iVAR, você resolve de vez aquelas jogadas polêmicas do futebol. Envie o vídeo do lance e nossa IA analisa cada frame usando as Regras Oficiais da FIFA. Tecnologia de ponta para trazer justiça ao seu jogo!
@@ -198,7 +198,7 @@ st.write("Veja abaixo como a IA analisa cada lance:")
 
 col1, col2, col3 = st.columns([2, 1, 1])
 with col1:
-    st.image("frames.png", caption="Exemplo da análise automática da IA", width=370)
+    st.image("frames.png", caption="Exemplo da análise automática da IA", width=380)
 
 
 
@@ -256,7 +256,7 @@ else:
 
 if st.session_state.get("acesso_liberado") and not st.session_state["video_processado"]:
     uploaded_file = st.file_uploader("Faça o envio de um vídeo mp4 do lance duvidoso", type=["mp4"])
-    if uploaded_file and st.button("🕴️ Analisar o vídeo"):
+    if uploaded_file and st.button("🤖⚽ Analisar a Jogada"):
         st.session_state["uploaded_file"] = uploaded_file
         st.session_state["processar_video_ativado"] = True
 
