@@ -179,25 +179,27 @@ def processar_video(uploaded_file):
 
     os.remove(temp_path)
 
-st.title("🤖 iVAR ⚽🤾‍♂️")
-st.write("Inteligência Artificial capaz de analisar vídeos de lances polêmicos no futebol. O iVAR foi desenvolvido para apoiar a avaliação de jogadas, ajudando a determinar se houve ou não alguma irregularidade.")
-st.write("Por favor, envie um vídeo curto, com no máximo 10 segundos, que registre o lance polêmico. O arquivo deve estar no formato MP4.")
+st.title("🤖 iVAR ⚽")
+
 st.write("""
-### Para realizar a análise, siga os seguintes passos:
-
-1. Informe seu e-mail para gerar o link de pagamento;
-2. Efetue o pagamento no valor de R$ 10,00;
-3. Envie o vídeo;
-4. Aguarde enquanto realizamos a análise e retornamos o resultado.
+Com o iVAR, você resolve de vez aquelas jogadas polêmicas do futebol. Envie o vídeo do lance e nossa IA analisa cada frame usando as Regras Oficiais da FIFA. Tecnologia de ponta para trazer justiça ao seu jogo!
 """)
-st.write("Confira, na imagem abaixo, como a IA realiza o processo de análise.")
 
-col1, col2, col3 = st.columns([1, 2, 1])  # Centraliza
-with col2:
-    st.image("frames.png", caption="Exemplo de análise da IA", width=450)
+st.markdown("""
+### 📋 Como funciona
+1. Informe seu e-mail para gerar o link de pagamento;
+2. Realize o pagamento de R$ 10,00;
+3. Envie o vídeo (máximo 10 segundos, formato MP4);
+4. Aguarde enquanto a IA analisa e te envia o resultado.
+""")
 
+st.write("Veja abaixo como a IA analisa cada lance:")
 
-email = st.text_input("Digite seu e-mail para pagar e acessar o analisador:")
+col1, col2, col3 = st.columns([2, 1, 1])
+with col1:
+    st.image("frames.png", caption="Exemplo da análise automática da IA", width=400)
+
+email = st.text_input("Digite seu e-mail para gerar o link de pagamento:")
 
 if not st.session_state["link_pagamento_clcado"]:
     if st.button("Gerar link de pagamento 💳💵"):
