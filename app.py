@@ -206,7 +206,7 @@ if not st.session_state["link_pagamento_clcado"]:
         with st.spinner("Gerando link de pagamento, aguarde..."):
             response = requests.post(
                 "https://apistripe.onrender.com/create-checkout-session/",
-                json={"email": email, "amount": 1000}
+                json={"email": email, "amount": 500}
             )
             if response.status_code == 200:
                 checkout_url = response.json()["checkout_url"]
